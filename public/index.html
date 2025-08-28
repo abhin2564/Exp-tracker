@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1 class="title">Expense Tracker by Abhinav</h1>
-  <div class="app two-column">
+  <div class="app">
     <!-- Left Column -->
     <div class="left-column">
       <section class="card total-card">
@@ -37,7 +37,7 @@
             <option value="Food">Food</option>
             <option value="Clothes">Clothes</option>
             <option value="Luxury">Luxury</option>
-            <option value="Luxury">Credit card</option>
+            <option value="Credit Card">Credit Card</option>
             <option value="Essentials">Essentials</option>
             <option value="Home">Home</option>
           </select>
@@ -53,31 +53,42 @@
         </form>
       </section>
 
-      <!-- Filters -->
-      <section class="card filters">
-        <h2>Filters</h2>
-        <div class="filter-row">
-          <label>Month:</label>
-          <input type="month" id="month" />
-          <label>Expense Type:</label>
-          <select id="typeFilter">
+    
+
+      <!-- Expense Table -->
+      <section class="card">
+        <h2>Expenses</h2>
+        <div class="table-filters">
+          <label for="table-month">Month:</label>
+          <input type="month" id="table-month" />
+          <label for="table-type">Type:</label>
+          <select id="table-type">
             <option value="">All Types</option>
             <option value="Food">Food</option>
             <option value="Clothes">Clothes</option>
             <option value="Luxury">Luxury</option>
+            <option value="Credit Card">Credit Card</option>
             <option value="Essentials">Essentials</option>
-            <option value="Luxury">Credit card</option>
             <option value="Home">Home</option>
           </select>
-          <button id="apply-filter" class="btn">Apply</button>
-          <button id="reset-filter" class="btn ghost">Reset</button>
+          <button id="table-apply" class="btn">Apply</button>
+          <button id="table-reset" class="btn ghost">Reset</button>
         </div>
-      </section>
-
-      <!-- Expense List -->
-      <section class="card">
-        <h2>Expenses</h2>
-        <ul id="expense-list"></ul>
+        <table id="expense-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Amount (₹)</th>
+              <th>Bank</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Expenses will be dynamically inserted here -->
+          </tbody>
+        </table>
       </section>
     </div>
   </div>

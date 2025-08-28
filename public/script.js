@@ -1,76 +1,47 @@
 const form = document.getElementById("expense-form");
-const list = document.getElementById("expense-list");
 const totalEl = document.getElementById("total");
+const tbody = document.querySelector("#expense-table tbody");
 
-const monthInput = document.getElementById("month");
-const typeFilter = document.getElementById("typeFilter");
-const bankFilter = document.getElementById("bankFilter");
-const applyBtn = document.getElementById("apply-filter");
-const resetBtn = document.getElementById("reset-filter");
+const tableMonth = document.getElementById("table-month");
+const tableType = document.getElementById("table-type");
+const tableApply = document.getElementById("table-apply");
+const tableReset = document.getElementById("table-reset");
 
-const chartMonthInput = document.getElementById("chart-month");
-const ctx = document.getElementById('expense-chart').getContext('2d');
-let pieChart;
+const chartMonth = document.getElementById("chart-month");
+const ctx = document.getElementById("expense-chart").getContext("2d");
 
 const API_URL = "http://localhost:5000/api/expenses";
 let allExpenses = [];
+let expenseChart;
 
 // Fetch all expenses
 async function fetchExpenses() {
   const res = await fetch(API_URL);
   allExpenses = await res.json();
   renderExpenses(allExpenses);
-  renderChart(allExpenses, chartMonthInput.value);
+  updateChart(allExpenses);
 }
 
-// Render expense list and total
+// Render expenses in table
 function renderExpenses(expenses) {
-  list.innerHTML = "";
+  tbody.innerHTML = "";
   let total = 0;
+
   expenses.forEach(exp => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <span><strong>${exp.name}</strong> (${exp.type}) - ₹${exp.amount} [${exp.bank}] - ${exp.date}</span>
-      <button onclick="deleteExpense('${exp.id}')">❌</button>
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${exp.name}</td>
+      <td>${exp.type}</td>
+      <td>₹${exp.amount}</td>
+      <td>${exp.bank}</td>
+      <td>${exp.date}</td>
+      <td><button class="delete-btn" onclick="deleteExpense('${exp.id}')">❌</button></td>
     `;
-    list.appendChild(li);
+    tbody.appendChild(tr);
     total += Number(exp.amount);
   });
+
   totalEl.textContent = total.toFixed(2);
-}
-
-// Render pie chart
-function renderChart(expenses, month) {
-  let filtered = month ? expenses.filter(e => e.date.startsWith(month)) : expenses;
-
-  const typeSums = {};
-  filtered.forEach(exp => {
-    typeSums[exp.type] = (typeSums[exp.type] || 0) + Number(exp.amount);
-  });
-
-  const labels = Object.keys(typeSums);
-  const data = Object.values(typeSums);
-
-  if (pieChart) pieChart.destroy(); // Destroy previous chart
-
-  pieChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: labels,
-      datasets: [{
-        data: data,
-        backgroundColor: [
-          '#27ae60', '#3498db', '#f1c40f', '#e74c3c', '#9b59b6'
-        ]
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { position: 'bottom' }
-      }
-    }
-  });
 }
 
 // Add expense
@@ -91,7 +62,6 @@ form.addEventListener("submit", async (e) => {
   });
 
   form.reset();
-  document.getElementById("date").value = new Date().toISOString().split("T")[0];
   fetchExpenses();
 });
 
@@ -101,38 +71,56 @@ async function deleteExpense(id) {
   fetchExpenses();
 }
 
-// Apply filters
-applyBtn.addEventListener("click", () => {
-  const month = monthInput.value;
-  const type = typeFilter.value;
-  const bank = bankFilter.value;
-
+// Table Filters
+tableApply.addEventListener("click", () => {
   let filtered = [...allExpenses];
-  if (month) filtered = filtered.filter(e => e.date.startsWith(month));
-  if (type) filtered = filtered.filter(e => e.type === type);
-  if (bank) filtered = filtered.filter(e => e.bank === bank);
-
+  if (tableMonth.value) filtered = filtered.filter(e => e.date.startsWith(tableMonth.value));
+  if (tableType.value) filtered = filtered.filter(e => e.type === tableType.value);
   renderExpenses(filtered);
 });
 
-// Reset filters
-resetBtn.addEventListener("click", () => {
-  monthInput.value = "";
-  typeFilter.value = "";
-  bankFilter.value = "";
+tableReset.addEventListener("click", () => {
+  tableMonth.value = "";
+  tableType.value = "";
   renderExpenses(allExpenses);
 });
 
-// Chart month filter
-chartMonthInput.addEventListener("change", () => {
-  renderChart(allExpenses, chartMonthInput.value);
+// Pie Chart
+function updateChart(expenses) {
+  const types = {};
+  expenses.forEach(e => {
+    types[e.type] = (types[e.type] || 0) + Number(e.amount);
+  });
+
+  const labels = Object.keys(types);
+  const data = Object.values(types);
+
+  if (expenseChart) expenseChart.destroy();
+
+  expenseChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels,
+      datasets: [{
+        label: "Expenses",
+        data,
+        backgroundColor: ["#27ae60","#2980b9","#f39c12","#8e44ad","#c0392b","#16a085"]
+      }]
+    }
+  });
+}
+
+// Pie Chart Month Filter
+chartMonth.addEventListener("change", () => {
+  let filtered = [...allExpenses];
+  if (chartMonth.value) filtered = filtered.filter(e => e.date.startsWith(chartMonth.value));
+  updateChart(filtered);
 });
 
 // Set today's date as default
 const dateInput = document.getElementById("date");
-if (!dateInput.value) {
-  dateInput.value = new Date().toISOString().split("T")[0];
-}
+const today = new Date().toISOString().split("T")[0];
+dateInput.value = today;
 
 // Initial load
 fetchExpenses();

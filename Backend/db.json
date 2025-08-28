@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "1756362070135",
+    "name": "coffe",
+    "type": "Food",
+    "amount": 100,
+    "bank": "SBI",
+    "date": "2025-08-28"
+  },
+  {
+    "id": "1756362086850",
+    "name": "gym",
+    "type": "Luxury",
+    "amount": 7500,
+    "bank": "SBI",
+    "date": "2025-08-28"
+  },
+  {
+    "id": "1756362630679",
+    "name": "avinash",
+    "type": "Clothes",
+    "amount": 44,
+    "bank": "SBI",
+    "date": "2025-08-28"
+  },
+  {
+    "id": "1756362656468",
+    "name": "sruthi",
+    "type": "Clothes",
+    "amount": 500,
+    "bank": "SBI",
+    "date": "2025-08-28"
+  },
+  {
+    "id": "1756362679375",
+    "name": "sgtb",
+    "type": "Clothes",
+    "amount": 3333,
+    "bank": "SBI",
+    "date": "2025-08-28"
+  }
+]

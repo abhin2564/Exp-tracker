@@ -6,28 +6,31 @@ body {
 }
 
 .title {
-  text-align: center;       /* Center align */
-  color: #27ae60;           /* Nice green color */
-  font-size: 5rem;        /* Bigger font */
-  font-weight: bold;         /* Make it bold */
-  margin-bottom: 20px;      /* Space below */
+  text-align: center;
+  color: #27ae60;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
-
-.app.two-column {
-  display: flex;
+.app {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0 auto;
+  display: flex;
   gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .left-column, .right-column {
   flex: 1;
+  min-width: 350px;
 }
 
 .card {
   background: #fff;
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
@@ -44,10 +47,12 @@ input, select, button {
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button.btn {
-  background: #877bdf;
+  background: #27ae60;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -55,7 +60,7 @@ button.btn {
 }
 
 button.btn:hover {
-  background: #3e3ecf;
+  background: #219150;
 }
 
 button.ghost {
@@ -63,32 +68,53 @@ button.ghost {
   color: #333;
 }
 
-.filters .filter-row {
+.filters .filter-row, .table-filters {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
+  margin-bottom: 10px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
-ul li {
+thead th {
+  background-color: #27ae60;
+  color: #fff;
   padding: 10px;
-  margin: 6px 0;
-  background: #ecf0f1;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
+  text-align: left;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+button.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  background-color: #c0392b;
 }
 
 .total-card {
-  background: #5b48ee;
+  background: #27ae60;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .total-card h2, .total-card h3 {
