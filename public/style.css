@@ -1,0 +1,96 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  text-align: center;       /* Center align */
+  color: #27ae60;           /* Nice green color */
+  font-size: 5rem;        /* Bigger font */
+  font-weight: bold;         /* Make it bold */
+  margin-bottom: 20px;      /* Space below */
+}
+
+
+.app.two-column {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.left-column, .right-column {
+  flex: 1;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+input, select, button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button.btn {
+  background: #877bdf;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.btn:hover {
+  background: #3e3ecf;
+}
+
+button.ghost {
+  background: #ccc;
+  color: #333;
+}
+
+.filters .filter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px;
+  margin: 6px 0;
+  background: #ecf0f1;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-card {
+  background: #5b48ee;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.total-card h2, .total-card h3 {
+  margin: 10px 0;
+}

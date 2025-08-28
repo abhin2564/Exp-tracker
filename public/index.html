@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker by Abhinav</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1 class="title">Expense Tracker by Abhinav</h1>
+  <div class="app two-column">
+    <!-- Left Column -->
+    <div class="left-column">
+      <section class="card total-card">
+        <h2>Total Expenditure</h2>
+        <h3>₹ <span id="total">0</span></h3>
+      </section>
+
+      <section class="card">
+        <h2>Expenses Pie Chart</h2>
+        <label for="chart-month">Filter by Month:</label>
+        <input type="month" id="chart-month" />
+        <canvas id="expense-chart"></canvas>
+      </section>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <!-- Add Expense Form -->
+      <section class="card">
+        <h2>Add Expense</h2>
+        <form id="expense-form" class="grid">
+          <input type="text" id="name" placeholder="Expense Name *" required />
+          <select id="type" required>
+            <option value="" disabled selected>Select Expense Type</option>
+            <option value="Food">Food</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Luxury">Credit card</option>
+            <option value="Essentials">Essentials</option>
+            <option value="Home">Home</option>
+          </select>
+          <input type="number" id="amount" placeholder="Amount (₹) *" step="0.01" required />
+          <select id="bank" required>
+            <option value="" disabled selected>Select Bank</option>
+            <option value="SBI">SBI</option>
+            <option value="KVB">KVB</option>
+            <option value="HSBC">HSBC</option>
+          </select>
+          <input type="date" id="date" />
+          <button type="submit" class="btn">Add Expense</button>
+        </form>
+      </section>
+
+      <!-- Filters -->
+      <section class="card filters">
+        <h2>Filters</h2>
+        <div class="filter-row">
+          <label>Month:</label>
+          <input type="month" id="month" />
+          <label>Expense Type:</label>
+          <select id="typeFilter">
+            <option value="">All Types</option>
+            <option value="Food">Food</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Essentials">Essentials</option>
+            <option value="Luxury">Credit card</option>
+            <option value="Home">Home</option>
+          </select>
+          <button id="apply-filter" class="btn">Apply</button>
+          <button id="reset-filter" class="btn ghost">Reset</button>
+        </div>
+      </section>
+
+      <!-- Expense List -->
+      <section class="card">
+        <h2>Expenses</h2>
+        <ul id="expense-list"></ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
