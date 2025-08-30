@@ -1,42 +1,34 @@
 [
   {
-    "id": "1756362070135",
-    "name": "coffe",
+    "id": "1756371533829",
+    "name": "Chicken kebab",
     "type": "Food",
-    "amount": 100,
+    "amount": 300,
     "bank": "SBI",
     "date": "2025-08-28"
   },
   {
-    "id": "1756362086850",
+    "id": "1756528640652",
+    "name": "chicken",
+    "type": "Food",
+    "amount": 220,
+    "bank": "SBI",
+    "date": "2025-08-30"
+  },
+  {
+    "id": "1756528684778",
     "name": "gym",
     "type": "Luxury",
-    "amount": 7500,
+    "amount": 4000,
     "bank": "SBI",
-    "date": "2025-08-28"
+    "date": "3000-03-30"
   },
   {
-    "id": "1756362630679",
-    "name": "avinash",
-    "type": "Clothes",
-    "amount": 44,
-    "bank": "SBI",
-    "date": "2025-08-28"
-  },
-  {
-    "id": "1756362656468",
+    "id": "1756528755644",
     "name": "sruthi",
     "type": "Clothes",
-    "amount": 500,
+    "amount": 5555,
     "bank": "SBI",
-    "date": "2025-08-28"
-  },
-  {
-    "id": "1756362679375",
-    "name": "sgtb",
-    "type": "Clothes",
-    "amount": 3333,
-    "bank": "SBI",
-    "date": "2025-08-28"
+    "date": "2025-08-30"
   }
 ]
